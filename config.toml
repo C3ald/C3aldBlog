@@ -1,0 +1,21 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+theme = 'blog-awesome'
+
+[params]
+	defaultColor = "dark" # set default color mode: dark or light
+
+[params.author]
+  avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
+  # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
+  description = "C3ald's Blog"
+
+[[params.socialIcons]]
+name="github"
+url="https://github.com/C3ald"
+
+[[params.socialIcons]]
+name="HTB"
+url="https://app.hackthebox.com/profile/440221"
+
