@@ -1,6 +1,6 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'C3ald Cybersecurity Blog'
 theme = 'blog-awesome'
 
 [params]
