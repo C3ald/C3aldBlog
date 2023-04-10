@@ -6,7 +6,16 @@
     <description>Recent content on C3ald Cybersecurity Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Apr 2023 20:16:09 -0700</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Apr 2023 21:54:55 -0700</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sauna HTB</title>
+      <link>http://example.org/posts/sauna-htb/</link>
+      <pubDate>Sun, 09 Apr 2023 21:54:55 -0700</pubDate>
+      
+      <guid>http://example.org/posts/sauna-htb/</guid>
+      <description>Recon sudo nmap -sU -sS -p- -T5 --min-rate=10000 10.10.10.175 PORT STATE SERVICE 53/tcp open domain 80/tcp open http 88/tcp open kerberos-sec 135/tcp open msrpc 139/tcp open netbios-ssn 389/tcp open ldap 445/tcp open microsoft-ds 464/tcp open kpasswd5 593/tcp open http-rpc-epmap 636/tcp open ldapssl 3268/tcp open globalcatLDAP 3269/tcp open globalcatLDAPssl 5985/tcp open wsman 9389/tcp open adws 49667/tcp open unknown 49673/tcp open unknown 49674/tcp open unknown 49677/tcp open unknown 49698/tcp open unknown 49725/tcp open unknown 53/udp open domain 123/udp open ntp Script scan sudo nmap --script ldap-search 10.</description>
+    </item>
+    
     <item>
       <title>Busqueda HTB</title>
       <link>http://example.org/posts/busqueda-htb/</link>
