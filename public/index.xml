@@ -49,6 +49,16 @@ The one port is the tcp port, which is used to retrieve information about connec
     </item>
     
     <item>
+      <title>Socket HTB</title>
+      <link>http://example.org/posts/socket-htb/</link>
+      <pubDate>Fri, 31 Mar 2023 23:13:39 -0700</pubDate>
+      
+      <guid>http://example.org/posts/socket-htb/</guid>
+      <description>Scan sudo nmap -sU -sS -p- --min-rate=10000 -T5 10.129.180.100 PORT STATE SERVICE 22/tcp open ssh 80/tcp open http 5789/tcp open unknown port 5789 is a websocket port and the website is running flask it is safe to guess that flask is also hosting the websocket server
+POST /reader HTTP/1.1 Host: qreader.htb User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/111.0 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8 Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Content-Type: multipart/form-data; boundary=---------------------------181768716810445582851724692176 Content-Length: 745 Origin: http://qreader.</description>
+    </item>
+    
+    <item>
       <title>Inject HTB</title>
       <link>http://example.org/posts/inject-htb/</link>
       <pubDate>Fri, 31 Mar 2023 23:07:54 -0700</pubDate>
