@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on My New Hugo Site</title>
+    <title>Posts on C3ald Cybersecurity Blog</title>
     <link>http://example.org/posts/</link>
-    <description>Recent content in Posts on My New Hugo Site</description>
+    <description>Recent content in Posts on C3ald Cybersecurity Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Apr 2023 12:25:19 -0700</lastBuildDate><atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Apr 2023 20:16:09 -0700</lastBuildDate><atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Busqueda HTB</title>
+      <link>http://example.org/posts/busqueda-htb/</link>
+      <pubDate>Sun, 09 Apr 2023 20:16:09 -0700</pubDate>
+      
+      <guid>http://example.org/posts/busqueda-htb/</guid>
+      <description>Recon sudo nmap -sU -sS -p- --min-rate=10000 -T5 -Pn 10.129.113.93 PORT STATE SERVICE 22/tcp open ssh 80/tcp open http gobuster dir -u &amp;#34;http://searcher.htb/&amp;#34; -w /usr/share/dirbuster/directory-list-lowercase-2.3-medium.txt -t 30 /search (Status: 405) [Size: 153] /server-status (Status: 403) [Size: 277] Fuzzing Looking at the repo the box uses for the url and finding what vulnerabilities are in v 2.4.2
+@click.argument(&amp;#34;query&amp;#34;) def search(engine, query, open, copy): try: url = eval(f&amp;#34;Engine.{engine}.search(&amp;#39;{query}&amp;#39;, copy_url={copy}, open_web={open})&amp;#34;) click.echo(url) searchor.history.update(engine, query, url) if open: POC</description>
+    </item>
+    
     <item>
       <title>Heist HTB</title>
       <link>http://example.org/posts/heist-htb/</link>
