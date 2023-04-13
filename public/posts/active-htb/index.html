@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Active HTB | C3ald Cybersecurity Blog</title>
+<meta property="og:title" content="Active HTB | C3ald Cybersecurity Blog" />
+<meta name="twitter:title" content="Active HTB | C3ald Cybersecurity Blog" />
+<meta itemprop="name" content="Active HTB | C3ald Cybersecurity Blog" />
+<meta name="application-name" content="Active HTB | C3ald Cybersecurity Blog" />
+<meta property="og:site_name" content="" />
+
+<meta name="description" content="">
+<meta itemprop="description" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:description" content="" />
+
+<meta property="og:locale" content="en-us" />
+<meta name="language" content="en-us" />
+
+
+
+  <meta itemprop="image" content="http://example.org/" />
+  <meta property="og:image" content="http://example.org/" />
+  <meta name="twitter:image" content="http://example.org/" />
+  <meta name="twitter:image:src" content="http://example.org/" />
+
+
+
+
+    
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2023-04-12T21:03:19-0700 />
+    <meta property="article:published_time" content=2023-04-12T21:03:19-0700 />
+
+    
+
+    
+
+    <script defer type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "headline": "Active HTB",
+        "author": {
+        "@type": "Person",
+        "name": ""
+        },
+        "datePublished": "2023-04-12",
+        "description": "",
+        "wordCount":  553 ,
+        "mainEntityOfPage": "True",
+        "dateModified": "2023-04-12",
+        "image": {
+        "@type": "imageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "C3ald Cybersecurity Blog"
+        }
+    }
+    </script>
+
+  <meta name="generator" content="Hugo 0.111.3">
+
+  
+
+  <link rel="canonical" href="http://example.org/posts/active-htb/"><link href="/sass/main.min.0eebb6db90b4ec9f4444ef402f08421ee056025ba860df3d749a9f299d472008.css" rel="stylesheet"><link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+  
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg">
+
+  
+    </head><body data-theme = "dark" class="notransition">
+<script src="http://example.org/js/themeLoader.min.4e9e1a253d543bbfec02e7f2460d9621e719fd739dc8a5256faa91cda6e12e03.js"></script><div class="navbar" role="navigation">
+  <nav class="menu" aria-label="Main Navigation">
+    <a href="/" class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Home</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+    </a>
+    <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+    <label for="menu-trigger">
+      <span class="menu-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+      </span>
+    </label>
+
+    <div class="trigger">
+      <ul class="trigger-container">
+        
+        
+        <li class="menu-separator">
+          <span>|</span>
+        </li>
+      </ul>
+      <a id="mode" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Active HTB</h1>
+                
+                <div class="post-meta">
+                    <time datetime="2023-04-12T21:03:19-07:00" itemprop="datePublished"> Apr 12, 2023 </time>
+                </div>
+            </header>
+            <div class="page-content">
+                <h1 id="recon">Recon</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo nmap -p- -sU -sS -min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">10000</span> -T5 10.10.10.100
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PORT      STATE SERVICE  
+</span></span><span style="display:flex;"><span>53/tcp    open  domain  
+</span></span><span style="display:flex;"><span>88/tcp    open  kerberos-sec  
+</span></span><span style="display:flex;"><span>135/tcp   open  msrpc  
+</span></span><span style="display:flex;"><span>139/tcp   open  netbios-ssn  
+</span></span><span style="display:flex;"><span>389/tcp   open  ldap  
+</span></span><span style="display:flex;"><span>445/tcp   open  microsoft-ds  
+</span></span><span style="display:flex;"><span>464/tcp   open  kpasswd5  
+</span></span><span style="display:flex;"><span>593/tcp   open  http-rpc-epmap  
+</span></span><span style="display:flex;"><span>636/tcp   open  ldapssl  
+</span></span><span style="display:flex;"><span>3268/tcp  open  globalcatLDAP  
+</span></span><span style="display:flex;"><span>5722/tcp  open  msdfsr  
+</span></span><span style="display:flex;"><span>9389/tcp  open  adws  
+</span></span><span style="display:flex;"><span>47001/tcp open  winrm  
+</span></span><span style="display:flex;"><span>49152/tcp open  unknown  
+</span></span><span style="display:flex;"><span>49153/tcp open  unknown  
+</span></span><span style="display:flex;"><span>49154/tcp open  unknown  
+</span></span><span style="display:flex;"><span>49155/tcp open  unknown  
+</span></span><span style="display:flex;"><span>49157/tcp open  unknown  
+</span></span><span style="display:flex;"><span>49158/tcp open  unknown  
+</span></span><span style="display:flex;"><span>49165/tcp open  unknown  
+</span></span><span style="display:flex;"><span>49172/tcp open  unknown  
+</span></span><span style="display:flex;"><span>49173/tcp open  unknown  
+</span></span><span style="display:flex;"><span>53/udp    open  domain  
+</span></span><span style="display:flex;"><span>123/udp   open  ntp
+</span></span></code></pre></div><p>It looks like an active directory server! For better enumeration of the domain</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo nmap -sC -A -O 10.10.10.100
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PORT      STATE SERVICE       VERSION  
+</span></span><span style="display:flex;"><span>53/tcp    open  domain        Microsoft DNS 6.1.7601 <span style="color:#f92672">(</span>1DB15D39<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>Windows Server <span style="color:#ae81ff">2008</span> R2 SP1<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>| dns-nsid:  
+</span></span><span style="display:flex;"><span>|_  bind.version: Microsoft DNS 6.1.7601 <span style="color:#f92672">(</span>1DB15D39<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>88/tcp    open  kerberos-sec  Microsoft Windows Kerberos <span style="color:#f92672">(</span>server time: 2023-04-13 02:33:56Z<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>135/tcp   open  msrpc         Microsoft Windows RPC  
+</span></span><span style="display:flex;"><span>139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn  
+</span></span><span style="display:flex;"><span>389/tcp   open  ldap          Microsoft Windows Active Directory LDAP <span style="color:#f92672">(</span>Domain: active.htb, Site: Default-First  
+</span></span><span style="display:flex;"><span>-Site-Name<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>445/tcp   open  microsoft-ds?  
+</span></span><span style="display:flex;"><span>464/tcp   open  kpasswd5?  
+</span></span><span style="display:flex;"><span>593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0  
+</span></span><span style="display:flex;"><span>636/tcp   open  tcpwrapped  
+</span></span><span style="display:flex;"><span>3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP <span style="color:#f92672">(</span>Domain: active.htb, Site: Default-First  
+</span></span><span style="display:flex;"><span>-Site-Name<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>3269/tcp  open  tcpwrapped  
+</span></span><span style="display:flex;"><span>49152/tcp open  msrpc         Microsoft Windows RPC  
+</span></span><span style="display:flex;"><span>49153/tcp open  msrpc         Microsoft Windows RPC  
+</span></span><span style="display:flex;"><span>49154/tcp open  msrpc         Microsoft Windows RPC  
+</span></span><span style="display:flex;"><span>49155/tcp open  msrpc         Microsoft Windows RPC  
+</span></span><span style="display:flex;"><span>49157/tcp open  ncacn_http    Microsoft Windows RPC over HTTP 1.0  
+</span></span><span style="display:flex;"><span>49158/tcp open  msrpc         Microsoft Windows RPC  
+</span></span><span style="display:flex;"><span>49165/tcp open  msrpc         Microsoft Windows RPC  
+</span></span><span style="display:flex;"><span>No exact OS matches <span style="color:#66d9ef">for</span> host <span style="color:#f92672">(</span>If you know what OS is running on it, see https://nmap.org/submit/ <span style="color:#f92672">)</span>.  
+</span></span><span style="display:flex;"><span>TCP/IP fingerprint:  
+</span></span><span style="display:flex;"><span>OS:SCAN<span style="color:#f92672">(</span>V<span style="color:#f92672">=</span>7.93%E<span style="color:#f92672">=</span>4%D<span style="color:#f92672">=</span>4/12%OT<span style="color:#f92672">=</span>53%CT<span style="color:#f92672">=</span>1%CU<span style="color:#f92672">=</span>33035%PV<span style="color:#f92672">=</span>Y%DS<span style="color:#f92672">=</span>2%DC<span style="color:#f92672">=</span>T%G<span style="color:#f92672">=</span>Y%TM<span style="color:#f92672">=</span>64376A5  
+</span></span><span style="display:flex;"><span>OS:0%P<span style="color:#f92672">=</span>x86_64-pc-linux-gnu<span style="color:#f92672">)</span>SEQ<span style="color:#f92672">(</span>SP<span style="color:#f92672">=</span>101%GCD<span style="color:#f92672">=</span>1%ISR<span style="color:#f92672">=</span>104%TI<span style="color:#f92672">=</span>I%CI<span style="color:#f92672">=</span>I%II<span style="color:#f92672">=</span>I%SS<span style="color:#f92672">=</span>S%TS<span style="color:#f92672">=</span>  
+</span></span><span style="display:flex;"><span>OS:7<span style="color:#f92672">)</span>OPS<span style="color:#f92672">(</span>O1<span style="color:#f92672">=</span>M53CNW8ST11%O2<span style="color:#f92672">=</span>M53CNW8ST11%O3<span style="color:#f92672">=</span>M53CNW8NNT11%O4<span style="color:#f92672">=</span>M53CNW8ST11%O5<span style="color:#f92672">=</span>M5  
+</span></span><span style="display:flex;"><span>OS:3CNW8ST11%O6<span style="color:#f92672">=</span>M53CST11<span style="color:#f92672">)</span>WIN<span style="color:#f92672">(</span>W1<span style="color:#f92672">=</span>2000%W2<span style="color:#f92672">=</span>2000%W3<span style="color:#f92672">=</span>2000%W4<span style="color:#f92672">=</span>2000%W5<span style="color:#f92672">=</span>2000%W6<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>  
+</span></span><span style="display:flex;"><span>OS:0<span style="color:#f92672">)</span>ECN<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>80%W<span style="color:#f92672">=</span>2000%O<span style="color:#f92672">=</span>M53CNW8NNS%CC<span style="color:#f92672">=</span>N%Q<span style="color:#f92672">=)</span>T1<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>80%S<span style="color:#f92672">=</span>O%A<span style="color:#f92672">=</span>S  
+</span></span><span style="display:flex;"><span>OS:+%F<span style="color:#f92672">=</span>AS%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T2<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>80%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>Z%A<span style="color:#f92672">=</span>S%F<span style="color:#f92672">=</span>AR%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T3<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%  
+</span></span><span style="display:flex;"><span>OS:T<span style="color:#f92672">=</span>80%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>Z%A<span style="color:#f92672">=</span>O%F<span style="color:#f92672">=</span>AR%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T4<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>80%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>A%A<span style="color:#f92672">=</span>O%F<span style="color:#f92672">=</span>R%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>  
+</span></span><span style="display:flex;"><span>OS:0%Q<span style="color:#f92672">=)</span>T5<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>80%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>Z%A<span style="color:#f92672">=</span>S+%F<span style="color:#f92672">=</span>AR%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T6<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>80%W<span style="color:#f92672">=</span>0%  
+</span></span><span style="display:flex;"><span>OS:S<span style="color:#f92672">=</span>A%A<span style="color:#f92672">=</span>O%F<span style="color:#f92672">=</span>R%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T7<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>80%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>Z%A<span style="color:#f92672">=</span>S+%F<span style="color:#f92672">=</span>AR%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>U1<span style="color:#f92672">(</span>  
+</span></span><span style="display:flex;"><span>OS:R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>N%T<span style="color:#f92672">=</span>80%IPL<span style="color:#f92672">=</span>164%UN<span style="color:#f92672">=</span>0%RIPL<span style="color:#f92672">=</span>G%RID<span style="color:#f92672">=</span>G%RIPCK<span style="color:#f92672">=</span>G%RUCK<span style="color:#f92672">=</span>G%RUD<span style="color:#f92672">=</span>G<span style="color:#f92672">)</span>IE<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DFI<span style="color:#f92672">=</span>  
+</span></span><span style="display:flex;"><span>OS:N%T<span style="color:#f92672">=</span>80%CD<span style="color:#f92672">=</span>Z<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>Network Distance: <span style="color:#ae81ff">2</span> hops  
+</span></span><span style="display:flex;"><span>Service Info: Host: DC; OS: Windows; CPE: cpe:/o:microsoft:windows_server_2008:r2:sp1, cpe:/o:microsoft:window  
+</span></span><span style="display:flex;"><span>s  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>Host script results:  
+</span></span><span style="display:flex;"><span>|_clock-skew: 13s  
+</span></span><span style="display:flex;"><span>| smb2-time:  
+</span></span><span style="display:flex;"><span>|   date: 2023-04-13T02:35:01  
+</span></span><span style="display:flex;"><span>|_  start_date: 2023-04-13T02:09:16  
+</span></span><span style="display:flex;"><span>| smb2-security-mode:  
+</span></span><span style="display:flex;"><span>|   210:  
+</span></span><span style="display:flex;"><span>|_    Message signing enabled and required
+</span></span></code></pre></div><h1 id="active-directory">Active Directory</h1>
+<p>Checking the SMB server there is a file called <code>groups.xml</code> and it contains a <code>cpassword</code>  which is gpp encryption and using a tool called <code>gpp-decrypt</code> it is possible to decrypt the password! Or if you are on blackarch use <code>https://github.com/leonteale/pentestpackage/blob/master/Gpprefdecrypt.py</code></p>
+<p>Then checking what permissions the gained creds have..</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>smbmap -u <span style="color:#e6db74">&#34;SVC_TGS&#34;</span> -p <span style="color:#e6db74">&#34;[REDACTED]&#34;</span> -H active.htb  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>________  ___      ___  _______   ___      ___       __         _______  
+</span></span><span style="display:flex;"><span>/<span style="color:#e6db74">&#34;       )|&#34;</span>  <span style="color:#ae81ff">\ </span>   /<span style="color:#e6db74">&#34;  ||   _  &#34;</span><span style="color:#ae81ff">\ </span>|<span style="color:#e6db74">&#34;  \    /&#34;</span>  |     /<span style="color:#e6db74">&#34;&#34;</span><span style="color:#ae81ff">\ </span>      |   __ <span style="color:#e6db74">&#34;\  
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(:   \___/  \   \  //   |(. |_)  :) \   \  //   |    /    \      (. |__) :)  
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">\___  \    /\  \/.    ||:     \/   /\   \/.    |   /&#39; /\  \     |:  ____/  
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">__/  \   |: \.        |(|  _  \  |: \.        |  //  __&#39;  \    (|  /  
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">/&#34;</span> <span style="color:#ae81ff">\ </span>  :<span style="color:#f92672">)</span> |.  <span style="color:#ae81ff">\ </span>   /:  <span style="color:#f92672">||</span>: |_<span style="color:#f92672">)</span>  :<span style="color:#f92672">)</span>|.  <span style="color:#ae81ff">\ </span>   /:  | /   /  <span style="color:#ae81ff">\ </span>  <span style="color:#ae81ff">\ </span> /|__/ <span style="color:#ae81ff">\ </span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>_______/  |___|<span style="color:#ae81ff">\_</span>_/|___|<span style="color:#f92672">(</span>_______/ |___|<span style="color:#ae81ff">\_</span>_/|___|<span style="color:#f92672">(</span>___/    <span style="color:#ae81ff">\_</span>__<span style="color:#f92672">)(</span>_______<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>-----------------------------------------------------------------------------  
+</span></span><span style="display:flex;"><span>SMBMap - Samba Share Enumerator | Shawn Evans - ShawnDEvans@gmail.com  
+</span></span><span style="display:flex;"><span>https://github.com/ShawnDEvans/smbmap  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> IP: active.htb:445  Name: unknown                   Status: Authenticated  
+</span></span><span style="display:flex;"><span>Disk                                                    Permissions     Comment  
+</span></span><span style="display:flex;"><span>----                                                    -----------     -------  
+</span></span><span style="display:flex;"><span>ADMIN$                                                  NO ACCESS       Remote Admin  
+</span></span><span style="display:flex;"><span>C$                                                      NO ACCESS       Default share  
+</span></span><span style="display:flex;"><span>IPC$                                                    NO ACCESS       Remote IPC  
+</span></span><span style="display:flex;"><span>NETLOGON                                                READ ONLY       Logon server share  
+</span></span><span style="display:flex;"><span>Replication                                             READ ONLY  
+</span></span><span style="display:flex;"><span>SYSVOL                                                  READ ONLY       Logon server share  
+</span></span><span style="display:flex;"><span>Users                                                   READ ONLY
+</span></span></code></pre></div><h1 id="kerberoasting">Kerberoasting</h1>
+<p>It is when an authenticated user requests for a SPN ticket that has hashes or sensitive data. Use one of Impacket&rsquo;s scripts to obtain an SPN then crack the hash! Then login to get the root flag!</p>
+
+            </div>
+        </article>
+    </main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+<a href="https://github.com/C3ald" target="_blank" rel="noopener noreferrer me" title="Github">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+</a>
+<a href="https://app.hackthebox.com/profile/440221" target="_blank" rel="noopener noreferrer me" title="HTB">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+</a></div>
+    <small class="footer_copyright">
+        © 2023 .
+        Powered by <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noreferrer noopener">Hugo blog awesome</a>
+        theme on
+        <a href="https://gohugo.io" target="_blank" rel="noreferrer noopener">Hugo</a>.
+    </small>
+</footer>
+<script src="http://example.org/js/themeSwitchnMenu.min.2a402288242b6930b175a0722c267e2353055739b3975834df35e56d00dd8f50.js"></script></body>
+</html>

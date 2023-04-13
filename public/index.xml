@@ -6,7 +6,16 @@
     <description>Recent content on C3ald Cybersecurity Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Apr 2023 21:54:55 -0700</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Apr 2023 21:03:19 -0700</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Active HTB</title>
+      <link>http://example.org/posts/active-htb/</link>
+      <pubDate>Wed, 12 Apr 2023 21:03:19 -0700</pubDate>
+      
+      <guid>http://example.org/posts/active-htb/</guid>
+      <description>Recon sudo nmap -p- -sU -sS -min-rate=10000 -T5 10.10.10.100 PORT STATE SERVICE 53/tcp open domain 88/tcp open kerberos-sec 135/tcp open msrpc 139/tcp open netbios-ssn 389/tcp open ldap 445/tcp open microsoft-ds 464/tcp open kpasswd5 593/tcp open http-rpc-epmap 636/tcp open ldapssl 3268/tcp open globalcatLDAP 5722/tcp open msdfsr 9389/tcp open adws 47001/tcp open winrm 49152/tcp open unknown 49153/tcp open unknown 49154/tcp open unknown 49155/tcp open unknown 49157/tcp open unknown 49158/tcp open unknown 49165/tcp open unknown 49172/tcp open unknown 49173/tcp open unknown 53/udp open domain 123/udp open ntp It looks like an active directory server!</description>
+    </item>
+    
     <item>
       <title>Sauna HTB</title>
       <link>http://example.org/posts/sauna-htb/</link>
